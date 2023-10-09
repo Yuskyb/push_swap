@@ -6,7 +6,7 @@
 /*   By: yususato <yususato@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 20:34:14 by yususato          #+#    #+#             */
-/*   Updated: 2023/10/03 17:57:18 by yususato         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:33:34 by yususato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef	struct s_stack
 	t_node	*bottom;
 	int		max_size;
 	int		current_size;
+	int		nameflag;
 }	t_stack;
 
 int		ft_putnbr_i(int nb);
@@ -59,5 +60,8 @@ t_stack	*create_stack(void);
 void	push(t_stack *stack, int data);
 int		pop(t_stack *stack);
 void	sa(t_stack *stackA);
+void  ra(t_stack *stack);
+void  rra(t_stack *stackA);
+void	sort3(t_stack *stack);
 
 #endif

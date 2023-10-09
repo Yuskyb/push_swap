@@ -6,7 +6,7 @@
 /*   By: yususato <yususato@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:47:50 by yususato          #+#    #+#             */
-/*   Updated: 2023/10/03 17:57:33 by yususato         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:34:48 by yususato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,49 @@ void	sa(t_stack *stackA)
 		stackA->top->prev->data = temp;
 		ft_printf("sa\n");
 	}
+}
+
+void	pa(t_stack *stackA, t_stack *stackB)
+{
+	int	temp;
+
+	if (stackB->top)
+	{
+		temp = pop(stackB);
+		push(stackA, temp);
+		if (stackA->nameflag == 1)
+		{
+			ft_printf("pa\n");
+		}
+	}
+}
+
+void  ra(t_stack *stackA)
+{
+	t_node *node;
+
+	if (stackA == NULL || stackA->top == NULL || stackA->top == stackA->bottom)
+		return;
+	node = stackA->top;
+	stackA->top = node->prev;
+	node->prev = NULL;
+	node->next = stackA->bottom;
+	stackA->bottom->prev = node;
+	stackA->bottom = node;
+	ft_printf("ra");
+}
+
+void  rra(t_stack *stackA)
+{
+	t_node *node;
+
+	if (stackA == NULL || stackA->top == NULL || stackA->top == stackA->bottom)
+		return;
+	node = stackA->bottom;
+	stackA->bottom = node->next;
+	node->next = NULL;
+	node->prev = stackA->top;
+	stackA->top->next = node;
+	stackA->top = node;
+	ft_printf("rra");
 }

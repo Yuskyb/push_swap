@@ -6,7 +6,7 @@
 #    By: yususato <yususato@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/02 20:28:35 by yususato          #+#    #+#              #
-#    Updated: 2023/10/03 17:56:08 by yususato         ###   ########.fr        #
+#    Updated: 2023/10/09 17:33:57 by yususato         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES_DIR)
 
 SRCS = push_swap.c \
 		src/create/create.c \
-		src/order/order_a.c
+		src/order/order_a.c \
+		sort3.c
 		
 
 OBJS = $(SRCS:%.c=%.o)
