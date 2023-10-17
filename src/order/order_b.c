@@ -6,7 +6,7 @@
 /*   By: yususato <yususato@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 22:27:16 by yususato          #+#    #+#             */
-/*   Updated: 2023/10/04 14:46:01 by yususato         ###   ########.fr       */
+/*   Updated: 2023/10/16 14:21:53 by yususato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	sb(t_stack *stackB)
 	int	temp;
 
 	if (stackB->top && stackB->top->prev)
-	[
+	{
 		temp = stackB->top->data;
-		stackB->top->data = stackA->top->prev->data;
+		stackB->top->data = stackB->top->prev->data;
 		stackB->top->prev->data = temp;
 		ft_printf("sb\n");
-	]
+	}
 }
 
 void	pb(t_stack *stackA, t_stack *stackB)
@@ -33,8 +33,8 @@ void	pb(t_stack *stackA, t_stack *stackB)
 	{
 		temp = pop(stackA);
 		push(stackB, temp);
-		ft_printf("pb\n");
 	}
+	ft_printf("pb\n");
 }
 
 void  rb(t_stack *stackB)
@@ -49,7 +49,7 @@ void  rb(t_stack *stackB)
 	node->next = stackB->bottom;
 	stackB->bottom->prev = node;
 	stackB->bottom = node;
-	ft_printf("rb");
+	ft_printf("rb\n");
 }
 
 void  rrb(t_stack *stackB)
@@ -64,5 +64,5 @@ void  rrb(t_stack *stackB)
 	node->prev = stackB->top;
 	stackB->top->next = node;
 	stackB->top = node;
-	ft_printf("rrb");
+	ft_printf("rrb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: yususato <yususato@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:47:50 by yususato          #+#    #+#             */
-/*   Updated: 2023/10/09 17:34:48 by yususato         ###   ########.fr       */
+/*   Updated: 2023/10/16 14:21:38 by yususato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,8 @@ void	pa(t_stack *stackA, t_stack *stackB)
 	{
 		temp = pop(stackB);
 		push(stackA, temp);
-		if (stackA->nameflag == 1)
-		{
-			ft_printf("pa\n");
-		}
 	}
+	ft_printf("pa\n");
 }
 
 void  ra(t_stack *stackA)
@@ -52,7 +49,7 @@ void  ra(t_stack *stackA)
 	node->next = stackA->bottom;
 	stackA->bottom->prev = node;
 	stackA->bottom = node;
-	ft_printf("ra");
+	ft_printf("ra\n");
 }
 
 void  rra(t_stack *stackA)
@@ -67,5 +64,5 @@ void  rra(t_stack *stackA)
 	node->prev = stackA->top;
 	stackA->top->next = node;
 	stackA->top = node;
-	ft_printf("rra");
+	ft_printf("rra\n");
 }

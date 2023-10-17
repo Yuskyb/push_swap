@@ -6,57 +6,28 @@
 /*   By: yususato <yususato@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:27:58 by yususato          #+#    #+#             */
-/*   Updated: 2023/10/09 18:58:21 by yususato         ###   ########.fr       */
+/*   Updated: 2023/10/16 19:18:46 by yususato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort5(t_stack *stackA, int count)
+void	sort5(t_stack *stackA)
 {
-	int	a[count];
-	int	i;
-		
-	while (stackA->bottom->prev)
-	{
-		a[i] = stackA->data;
-		stack->prev;
-		i++;
-	}
-	bubble(a, count);
-	while (i>0)
-	{
-		if (stackA->data == a[count] || stackA->data == a[count - 1])
-			pb(stackA);
-		stackA->next;
-		i--;
-	}
-}
+	t_stack	*stackB;
 
-void	swap(int *a,int *b)
-{
-	int	temp;
-	
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-void	bubble(int	arr[], int n)
-{
-	int	i;
-	int	j;
-	
-	i = 0;
-	j = 0;
-	while (i < count)
-	{
-		while (j < count - i - 1)
-		{
-			if (arr[j] > arr[j + 1])
-				swap(&arr[j], arr[j + 1]);
-			j++;
-		}
-		i++;
-	}
+	stackB = create_stack();
+	while (!(stackA->top->data == 3 || stackA->top->data == 4))
+		ra(stackA);
+	pb(stackA, stackB);
+	while (!(stackA->top->data == 3 || stackA->top->data == 4))
+		ra(stackA);
+	pb(stackA, stackB);
+	sort3(stackA);
+	if (stackB->top > stackB->top->prev)
+		rb(stackB);
+	while(stackB->top)
+		pa(stackA, stackB);
+	ra(stackA);
+	ra(stackA);
 }

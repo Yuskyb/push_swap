@@ -6,7 +6,7 @@
 /*   By: yususato <yususato@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 20:34:14 by yususato          #+#    #+#             */
-/*   Updated: 2023/10/09 17:33:34 by yususato         ###   ########.fr       */
+/*   Updated: 2023/10/16 18:21:39 by yususato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,20 @@ t_stack	*create_stack(void);
 void	push(t_stack *stack, int data);
 int		pop(t_stack *stack);
 void	sa(t_stack *stackA);
+void	pa(t_stack *stackA, t_stack *stackB);
 void  ra(t_stack *stack);
 void  rra(t_stack *stackA);
 void	sort3(t_stack *stack);
+void	swap(int *a,int *b);
+void	bubble(int	arr[], int n);
+void check(t_stack *stack, int *t1, int *t2, int *t3);
+void	change(t_stack *stack, char **av, int *flag);
+void	sort5(t_stack *stackA);
+void	sb(t_stack *stackB);
+void	pb(t_stack *stackA, t_stack *stackB);
+void  rb(t_stack *stackB);
+void  rrb(t_stack *stackB);
+void	divide(t_stack *stackA);
+int	search(t_stack *stack, int num);
 
 #endif
