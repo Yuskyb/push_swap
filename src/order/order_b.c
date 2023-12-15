@@ -6,63 +6,65 @@
 /*   By: yususato <yususato@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 22:27:16 by yususato          #+#    #+#             */
-/*   Updated: 2023/10/16 14:21:53 by yususato         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:25:51 by yususato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sb(t_stack *stackB)
+void	sb(t_stack *stack_b)
 {
 	int	temp;
 
-	if (stackB->top && stackB->top->prev)
+	if (stack_b->top && stack_b->top->prev)
 	{
-		temp = stackB->top->data;
-		stackB->top->data = stackB->top->prev->data;
-		stackB->top->prev->data = temp;
+		temp = stack_b->top->data;
+		stack_b->top->data = stack_b->top->prev->data;
+		stack_b->top->prev->data = temp;
 		ft_printf("sb\n");
 	}
 }
 
-void	pb(t_stack *stackA, t_stack *stackB)
+void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	int	temp;
 
-	if (stackA->top)
+	if (stack_a->top)
 	{
-		temp = pop(stackA);
-		push(stackB, temp);
+		temp = pop(stack_a);
+		push(stack_b, temp);
 	}
 	ft_printf("pb\n");
 }
 
-void  rb(t_stack *stackB)
+void	rb(t_stack *stack_b)
 {
-	t_node *node;
+	t_node	*node;
 
-	if (stackB == NULL || stackB->top == NULL || stackB->top == stackB->bottom)
-		return;
-	node = stackB->top;
-	stackB->top = node->prev;
+	if (stack_b == NULL || stack_b->top == NULL
+		|| stack_b->top == stack_b->bottom)
+		return ;
+	node = stack_b->top;
+	stack_b->top = node->prev;
 	node->prev = NULL;
-	node->next = stackB->bottom;
-	stackB->bottom->prev = node;
-	stackB->bottom = node;
+	node->next = stack_b->bottom;
+	stack_b->bottom->prev = node;
+	stack_b->bottom = node;
 	ft_printf("rb\n");
 }
 
-void  rrb(t_stack *stackB)
+void	rrb(t_stack *stack_b)
 {
-	t_node *node;
+	t_node	*node;
 
-	if (stackB == NULL || stackB->top == NULL || stackB->top == stackB->bottom)
-		return;
-	node = stackB->bottom;
-	stackB->bottom = node->next;
+	if (stack_b == NULL || stack_b->top == NULL
+		|| stack_b->top == stack_b->bottom)
+		return ;
+	node = stack_b->bottom;
+	stack_b->bottom = node->next;
 	node->next = NULL;
-	node->prev = stackB->top;
-	stackB->top->next = node;
-	stackB->top = node;
+	node->prev = stack_b->top;
+	stack_b->top->next = node;
+	stack_b->top = node;
 	ft_printf("rrb\n");
 }

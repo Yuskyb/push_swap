@@ -6,7 +6,7 @@
 #    By: yususato <yususato@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/02 20:28:35 by yususato          #+#    #+#              #
-#    Updated: 2023/10/16 19:49:31 by yususato         ###   ########.fr        #
+#    Updated: 2023/10/18 20:39:04 by yususato         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,14 @@ SRCS = push_swap.c \
 		src/create/create.c \
 		src/order/order_a.c \
 		src/order/order_b.c \
+		src/order/same.c \
 		sort3.c \
 		change.c \
 		sort5.c \
 		divide.c \
-		
-		
+		push_atoi.c \
+		error.c \
+		tool.c
 
 OBJS = $(SRCS:%.c=%.o)
 

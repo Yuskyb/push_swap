@@ -6,7 +6,7 @@
 #    By: yususato <yususato@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/19 16:12:07 by yususato          #+#    #+#              #
-#    Updated: 2023/10/02 21:06:25 by yususato         ###   ########.fr        #
+#    Updated: 2023/11/03 17:01:38 by yususato         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCL)
 INCL = libft.h
-SRCS = ft_atoi.c \
-	ft_bzero.c \
+SRCS = ft_bzero.c \
 	ft_calloc.c \
 	ft_isalnum.c \
 	ft_isalpha.c \

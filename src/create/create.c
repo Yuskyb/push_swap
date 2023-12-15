@@ -6,7 +6,7 @@
 /*   By: yususato <yususato@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:55:30 by yususato          #+#    #+#             */
-/*   Updated: 2023/10/16 15:45:05 by yususato         ###   ########.fr       */
+/*   Updated: 2023/10/18 20:09:15 by yususato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_stack	*create_stack(void)
 		exit(1);
 	new->top = NULL;
 	new->bottom = NULL;
-	new->current_size = 0;
-	new->max_size = 0;
+	new->current = 0;
+	new->max = 0;
 	return (new);
 }
 
@@ -44,10 +44,10 @@ void	push(t_stack *stack, int data)
 	else
 	{
 		stack->top->next = node;
-		node->prev = stack->top; 
+		node->prev = stack->top;
 		stack->top = node;
 	}
-	stack->current_size = stack->current_size +1;
+	stack->current = stack->current +1;
 }
 
 int	pop(t_stack *stack)
@@ -69,7 +69,7 @@ int	pop(t_stack *stack)
 		stack->top = stack->top->prev;
 		stack->top->next = NULL;
 	}
-	stack->current_size = stack->current_size - 1;
+	stack->current = stack->current - 1;
 	free(node);
 	return (data);
 }

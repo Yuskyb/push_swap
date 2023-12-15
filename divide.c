@@ -6,67 +6,72 @@
 /*   By: yususato <yususato@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:04:50 by yususato          #+#    #+#             */
-/*   Updated: 2023/10/17 18:02:57 by yususato         ###   ########.fr       */
+/*   Updated: 2023/10/18 20:13:37 by yususato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	divide(t_stack *stackA)
+void	sort_check(t_stack *stack_a, t_stack *stack_b)
 {
-	int p30;
-	int p10;
-	t_stack	*stackB;
+	int		p30;
+	int		p10;
 
-	stackB = create_stack();
-	while (stackA->current_size > 3)
+	while (stack_a->current > 3)
 	{
-		p30 = stackA->current_size * 0.3 + stackA->max_size - stackA->current_size;
-		p10 = stackA->current_size * 0.1 + stackA->max_size - stackA->current_size;
-		if (stackA->current_size == 6)
-			p30 = 2 + stackA->max_size - stackA->current_size;
-		if (stackA->current_size == 4)
-			p30 = stackA->max_size - stackA->current_size;
-		while ((stackA->max_size - stackA->current_size) <= p30)
+		p30 = stack_a->current * 0.3 + stack_a->max - stack_a->current;
+		p10 = stack_a->current * 0.1 + stack_a->max - stack_a->current;
+		if (stack_a->current == 6)
+			p30 = 2 + stack_a->max - stack_a->current;
+		if (stack_a->current == 4)
+			p30 = stack_a->max - stack_a->current;
+		while ((stack_a->max - stack_a->current) <= p30)
 		{
-			if (stackA->top->data <= p30)
+			if (stack_a->top->data <= p30)
 			{
-				pb(stackA, stackB);
-				if (stackB->top->data <= p10)
-					rb(stackB);
+				pb(stack_a, stack_b);
+				if (stack_b->top->data <= p10)
+					rb(stack_b);
 			}
 			else
-				ra(stackA);
+				ra(stack_a);
 		}
 	}
-	sort3(stackA);
-	while (stackB->top != NULL)
+}
+
+void	divide(t_stack *stack_a)
+{
+	t_stack	*stack_b;
+
+	stack_b = create_stack();
+	sort_check(stack_a, stack_b);
+	sort3(stack_a);
+	while (stack_b->top != NULL)
 	{
-		if (stackB->top->data == stackB->current_size - 1)
-			pa(stackA, stackB);
-		else if (search(stackB, stackB->current_size - 1) < stackB->current_size / 2)
-			rb(stackB);
+		if (stack_b->top->data == stack_b->current - 1)
+			pa(stack_a, stack_b);
+		else if (search(stack_b, stack_b->current - 1) < stack_b->current / 2)
+			rb(stack_b);
 		else
-			rrb(stackB);
+			rrb(stack_b);
 	}
 }
 
 int	search(t_stack *stack, int num)
 {
-	t_node *temp;
+	t_node	*temp;
 	int		count;
-	
+
 	count = 0;
 	temp = stack->top;
 	while (temp)
 	{
-
 		if (num == temp->data)
 			break ;
 		temp = temp->prev;
 		count++;
 	}
-	if (count == stack->current_size)
+	if (count == stack->current)
 	{
 		count = -1;
 	}

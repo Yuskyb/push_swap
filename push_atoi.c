@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   push_atoi.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yususato <yususato@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 14:19:03 by yususato          #+#    #+#             */
-/*   Updated: 2023/05/29 14:27:36 by yususato         ###   ########.fr       */
+/*   Created: 2023/10/18 15:45:16 by yususato          #+#    #+#             */
+/*   Updated: 2023/10/18 17:15:28 by yususato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 static int	space(const char *str)
 {
@@ -21,7 +21,7 @@ static int	space(const char *str)
 		return (0);
 }
 
-static int	check(const char *str, int count, long answer)
+static int	atoi_check(const char *str, int count, long answer)
 {
 	size_t	i;
 
@@ -31,42 +31,40 @@ static int	check(const char *str, int count, long answer)
 		answer = answer * 10 + str[i] - '0';
 		if (count == 1 && (str[i + 1] >= '0' && str[i + 1] <= '9'))
 		{
-			if ((answer == LONG_MAX / 10 && str[i + 1] - '0' >= LONG_MAX % 10)
-				|| (answer > LONG_MAX / 10))
-				return ((int)(LONG_MAX));
+			if ((answer == INT_MAX / 10 && str[i + 1] - '0' > INT_MAX % 10)
+				|| (answer > INT_MAX / 10))
+				error();
 		}
 		else if (count == -1 && (str[i + 1] >= '0' && str[i + 1] <= '9'))
 		{
-			if (((answer == LONG_MAX / 10
-						&& str[i + 1] - '0' >= LONG_MAX % 10 + 1))
-				|| (answer > LONG_MAX / 10))
-				return ((int)(LONG_MIN));
+			if (((answer == INT_MAX / 10
+						&& str[i + 1] - '0' > INT_MAX % 10 + 1))
+				|| (answer > INT_MAX / 10))
+				error();
 		}
 		i++;
 	}
+	if (str[i] != '\0')
+		error();
 	return ((int)(answer * count));
 }
 
-int	ft_atoi(const char *str)
+int	push_atoi(const char *str)
 {
 	int		count;
 	long	answer;
 
 	count = 1;
 	answer = 0;
-	while (*str != '\0' && space(str))
-	{
-		str++;
-	}
+	while (*str != '\0' && space(str) && *str == '+')
+		error();
 	if (*str == '-')
 	{
 		count = -1;
 		str++;
 	}
-	else if (*str == '+')
-	{
-		str++;
-	}
-	answer = check(str, count, answer);
+	if (!('0' <= *str && *str <= '9'))
+		error();
+	answer = atoi_check(str, count, answer);
 	return ((int)(answer));
 }
